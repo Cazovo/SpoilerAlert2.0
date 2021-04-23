@@ -1,0 +1,9 @@
+<h2>Edit Thread</h2>
+
+<form action="/threads/<%= @thread.id %>" method="POST">
+    <input type="hidden" id="hidden" name="_method" value="PATCH">
+
+    <h3>Edit Your Thread</h3><br>
+    <input type="text" name="title" value="<%= @thread.title %>"><br><br>
+    <input type="text" name="spoiler" value="<%= @thread.spoiler %>"><br><br>
+</form>    

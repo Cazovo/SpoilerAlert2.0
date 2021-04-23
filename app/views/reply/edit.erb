@@ -1,0 +1,13 @@
+<h2>Edit reply</h2>
+
+<form action="/replies/<%= @replies.id %>" method="POST">
+    <input type="hidden" id="hidden" name="_method" value="PATCH">
+
+    <h3>Edit Your Reply </h3><br><br>
+    <input type="text" name="reply" value="<%=@reply.spoiler %>"><br><br>
+</form>
+
+<form action="/reply/<%= @replies.id %>" method="POST">
+    <input type="hidden" id="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete Reply">
+</form>    

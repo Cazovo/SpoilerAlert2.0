@@ -1,0 +1,11 @@
+<p><%= @thread.spoiler %></p><br>
+
+
+<a href="/reply"><button>Go Back</button></a><br><br>
+
+<a href="/reply/<%= @replies.id %>/reply/edit"><button>Edit Reply</button></a><br><br>
+
+<form action="/reply/<%= @replies.id %>" method="POST">
+    <input type="hidden" id="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete Reply">
+</form>
