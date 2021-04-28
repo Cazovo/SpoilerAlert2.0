@@ -10,20 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 3) do
-
-  create_table "replies", force: :cascade do |t|
-    t.integer "thread_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
+ActiveRecord::Schema.define(version: 2) do
 
   create_table "threads", force: :cascade do |t|
     t.string "title"
-    t.string "spoiler"
+    t.string "content"
+    t.string "subject"
     t.integer "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["user_id"], name: "index_threads_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

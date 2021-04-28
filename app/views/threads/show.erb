@@ -1,15 +1,19 @@
-<h1> <%= @thread.title %> </h1>
-<hr>
-<br>
-<b> Spoiler: </b><br><br>
-<p><%= @thread.spoiler %></p><br>
+<h1>Threads</h1>
+<div>
+  <h2><%= @thread.title %></h2>
+  <ul>
+    <li>
+      Subject: <%= @thread.subject %>
+    </li>
+  </ul>
+  <div>
+    Content: <%= @thread.content %>
+  </div>
 
+</div>
 
-<a href="/threads"><button>Go Back</button></a><br><br>
-
-<a href="/threads/<%= @thread.id %>/threads/edit"><button>Edit Thread</button></a><br><br>
-
-<form action="/threads/<%= @thread.id %>" method="POST">
-    <input type="hidden" id="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete Thread">
-</form>
+<br/>
+    <form method="POST" action="/threads/<%= @thread.id %>/delete">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete Thread!">
+    </form>

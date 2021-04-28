@@ -1,8 +1,11 @@
-<form action="/threads" method="POST">
-    
-    <h3>New Thread</h3><br>
-    <input type="text" name="title" placeholder="Thread Title"><br><br>
-    <input type="text" name="spoiler" placeholder="Spoiler"><br><br>
-    <input type="submit" value="Submit">
+<h1>SpoilerAlert!</h1>
 
+<h3>Thread</h3>
+
+<form action="/threads" method="POST">
+  <p>title: <input type="text" name="threads[title]" /></p>
+  <p>subject: <input type="text" name="threads[subject]" /></p>
+  <p>content: <input type="text" name="threads[content]" /></p>
+
+  <input type="submit" value="Create Thread">
 </form>

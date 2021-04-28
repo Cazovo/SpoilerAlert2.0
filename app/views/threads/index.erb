@@ -1,20 +1,12 @@
-<h1>Welcome, <%= current_user.name %></h1>
+<h1>SpoilerAlert!</h1>
 
-<p>Heres Recent Threads you might have missed</p>
 
-<% @threads.each do |threads| %>
-    <hr><br>
-    <a href="/threads/<%= threads.id %>/reply/new"><button>Add reply</button></a>
-    <h3><%= threads.title %></h3><a href="/threads/<%= threads.id %>/reply/new"></a>
-    <h5><%= threads.title %></h5><br>
-    <ul>
-    <% threads.replies.each do |reply| %>
-        <h4><a href="/reply/<%= replies.id %>"><%= replies.spoiler %></h4></a>
-        <br>
-        <br>
-    <% end %>
-    </ul>
-<% end %>
-<hr><br>
-<a href="/threads/new"><button>Add Thread</button></a>
-<a href="/logout"><button>Log Out</button></a>
+<h3>Recent Threads you may have missed</h3>
+
+<div>
+  <% @threads.each do |thread|%>
+    <h4><%= thread.title%></h4>
+    <p>subject: <%= thread.subject%></p>
+    <p><%= thread.content%></p>
+  <% end %>
+</div>

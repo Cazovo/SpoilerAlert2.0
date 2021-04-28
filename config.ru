@@ -10,5 +10,4 @@ use Rack::MethodOverride
 # Here is where I will mount other controllers with 'use'
 use UsersController
 use ThreadsController
-#use RepliesController
 run ApplicationController

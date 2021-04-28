@@ -1,50 +1,75 @@
 class ThreadsController < ApplicationController
-       
-    #shows current users threads
-    get '/threads' do
-        if logged_in?
-            @thread = current_user.threads
-            erb :'threads/index'
-        else
-           redirect '/login'
-        end
+   
+
+
+     #index 
+  get "/threads" do 
+    if current_user 
+    @threads = Threads.all
+    erb :"threads/index"
+    end 
+  end 
+
+  #new 
+  get "/threads/new" do 
+    erb :"threads/new"
+  end
+
+  #create 
+  post "/threads" do 
+     
+    if params[:title] == "" || params[:subject] == "" || params[:content] == ""
+      redirect to "/threads/new"
+    else 
+      @thread = Threads.new(params[:threads])
+      if @thread.save
+        redirect to "/threads/#{@thread.id}"
+      else 
+        redirect to "/threads/new"
+      end
+    end 
+  end 
+
+  #show 
+  get "/threads/:id" do 
+    @thread = Threads.find_by_id(params[:id])
+    if @thread 
+      erb :"/threads/show"
+    else 
+      redirect to "/threads"
+    end 
+  end 
+
+  #edit 
+  get "/threads/:id/edit" do 
+    @thread = Thread.find_by_id(params[:id])
+    if @thread 
+      erb :"/threads/edit"
+    else 
+      rediect to "/threads"
+    end 
+  end 
+
+  #update 
+  patch "/threads/:id" do 
+    if params[:title] == "" || params[:subject] == "" || params[:content] == ""
+      redirect to "/threads/#{params[:id]}/edit"
+    else 
+      @thread = Thread.find_by_id(params[:id])
+      if @thread && @thread.update(params[:threads])
+        redirect to "/threads/#{@thread.id}"
+      else 
+        redirect to "/threads/#{params[:id]}/edit"
+      end
+    end 
+  end 
+
+  #delete
+  delete "/threads/:id/delete" do 
+    @thread = Thread.find_by_id(params[:id])
+    if @thread 
+      @thread.delete
     end
-    
-    #creates new threads
-    get '/threads/new' do
-        if logged_in?
-            erb :'threads/new'
-        end
-        
-    end
-    #creates new threads
-    post '/threads' do 
-        if logged_in?
-            thread = current_user.threads.create(title: params[:title], 
-                                                 spoiler: params[:spoiler])
-
-            if thread
-                redirect '/threads'
-            else 
-                redirect 'threads/new'
-            end
-
-        else
-            redirect '/login'
-        end
-    end
-
-    #deletes thread
-    delete '/threads/:id' do
-        if logged_in?
-            threads = current_user.threads.find_by(id: params[:id])
-            if threads.user = current_user
-               thread.destroy
-            end   
-
-            redirect '/threads'
-        else
-            redirect '/login'
-        end 
-    end    
-end
+    redirect to "/threads"
+  end 
+end 
