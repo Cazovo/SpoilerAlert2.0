@@ -12,14 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2) do
 
-  create_table "threads", force: :cascade do |t|
+  create_table "spoilers", force: :cascade do |t|
     t.string "title"
     t.string "content"
     t.string "subject"
     t.integer "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["user_id"], name: "index_threads_on_user_id"
+    t.index ["user_id"], name: "index_spoilers_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

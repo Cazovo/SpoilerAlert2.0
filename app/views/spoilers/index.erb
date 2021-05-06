@@ -1,0 +1,16 @@
+<h1>SpoilerAlert!</h1>
+
+
+<h3>Recent Spoilers you may have missed</h3>
+
+<div>
+  <% @spoilers.each do |spoiler|%>
+    <h4><%= spoiler.title%></h4>
+    <p>subject: <%= spoiler.subject%></p>
+    <p><%= spoiler.content%></p>
+    <a href="/spoilers/<%= spoiler.id %>/edit"><button>Edit Spoiler!</button></a>
+  <% end %>
+</div>
+
+<a href="/spoilers/new"><button>Add Spoiler</button></a>
+<a href="/logout"><button>Log Out</button></a>

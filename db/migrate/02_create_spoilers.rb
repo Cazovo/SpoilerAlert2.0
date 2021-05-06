@@ -1,6 +1,6 @@
-class CreateThreads < ActiveRecord::Migration[6.1]
+class CreateSpoilers < ActiveRecord::Migration[6.1]
     def change
-        create_table :threads do |t|
+        create_table :spoilers do |t|
             
             t.string :title
             t.string :content

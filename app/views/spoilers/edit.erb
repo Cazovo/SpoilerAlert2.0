@@ -1,0 +1,12 @@
+<h2>Edit Spoiler</h2>
+
+<form action="/spoilers/<%= @spoiler.id%>/edit" method="POST">
+  <input type="hidden" name="_method" value="PATCH">
+ <p>title: <input type="text" name="spoilers[title]" value="<%= @spoiler.title%>" /></p>
+  <p>subject: <input type="text" name="spoilers[subject]" value="<%= @spoiler.subject %>"/></p>
+  <p>content: <input type="text" name="spoilers[content]" value="<%= @spoiler.content%>"/></p>
+
+
+  <input type="submit" value="Submit Edit">
+</form>
+  

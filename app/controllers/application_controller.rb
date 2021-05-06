@@ -10,7 +10,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    "Hello World"
+    erb :welcome
   end  
   
   get "/login" do
@@ -22,7 +22,7 @@ class ApplicationController < Sinatra::Base
     user = User.find_by(username: params[:username])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect '/threads/index'
+      redirect '/spoilers/index'
     else
       redirect '/signup'
     end    

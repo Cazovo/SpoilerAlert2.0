@@ -1,0 +1,23 @@
+<h1>Spoilers</h1>
+<div>
+  <h2><%= @spoiler.title %></h2>
+  <ul>
+    <li>
+      Subject: <%= @spoiler.subject %>
+    </li>
+  </ul>
+  <div>
+    Content: <%= @spoiler.content %>
+  </div>
+
+</div>
+
+<br/>
+    <form method="POST" action="/spoilers/<%= @spoiler.id %>/delete">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete Spoiler!">
+    </form>
+
+    <a href="/spoilers/index"><button>Go home</button></a>
+    <a href="/spoilers/<%= @spoiler.id %>/edit"><button>Edit Spoiler!</button></a>
+<a href="/logout"><button>Log Out</button></a>

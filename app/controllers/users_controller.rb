@@ -12,9 +12,9 @@ class UsersController < ApplicationController
         password: params[:password])
         if user.valid?
             session[:user_id] = user.id
-            redirect '/threads'
-        else 
             redirect '/login'
+        else 
+            redirect '/signup'
         end
     end
 end
